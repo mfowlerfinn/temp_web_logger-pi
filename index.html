@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="refresh" content="240"/>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<title>Nursery Temperature</title>
+<style>
+body { background-color: white; font-family: Arial, Helvetica, Sans-Serif; Color: #000088; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+
+<script>
+Plotly.d3.csv( "/scripts/enviro.csv",(err, rows) => {function unpack(rows, key) {return rows.map(f$
+
+        var trace1 = {
+                type: "scatter",
+                mode: "lines",
+                name: "Temperature",
+                x: unpack(rows, 'timestamp'),
+                y: unpack(rows, 'temp'),
+                line: {
+                        shape:'spline',
+                        color: 'black',
+                        width: 3
+                        }
+                };
+
+        var trace2 = {
+                type: "scatter",
+                mode: "lines",
+                name: "Lux",
+                x: unpack(rows, 'timestamp'),
+                y: unpack(rows, 'light'),
+                line: {color: 'yellow', width: 2}
+                };
+
+        var data = [trace1];
+
+        var layout = {
+                title: 'Nursery',
+                xaxis: {
+                title: 'Timestamp'
+                },
+                yaxis: {
+                }
+                };
+
+        Plotly.newPlot("graph", data, layout, {responsive: true, displayModeBar: true, displaylogo$
+        });
+
+</script>
+</body>
+</html>

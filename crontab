@@ -1,0 +1,4 @@
+@reboot     cd /var/www/html/scripts/ && bash save_old_log.sh
+@reboot     python3 /var/www/html/scripts/enviro_log_start.py
+0 * * * * python3 /var/www/html/scripts/sample_enviro.py
+0 * * * * python3 /var/www/html/scripts/tempOut.py
